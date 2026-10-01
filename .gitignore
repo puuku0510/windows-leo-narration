@@ -1,0 +1,10 @@
+*.mp3
+*.wav
+*.zip
+*.env
+.env.*
+work/
+outputs/
+tts-ja-harness/
+narration.json
+narration.tts.json
