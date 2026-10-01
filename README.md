@@ -1,6 +1,6 @@
 # Windows × Codex: Leo 日本語ナレーション
 
-Windows の Codex から、**自分で正規に入手した** [tts-ja-harness](https://note.com/mrpocha/n/n5a84a60f1f95) と xAI Grok TTS の Leo 音声を使うための補助スキルです。購入版の手順を必須とし、別の TTS や声変換で黙って代用しないよう指示しています。
+Windows の Codex から、**自分で正規に入手した** [tts-ja-harness](https://note.com/mrpocha/n/n5a84a60f1f95) と xAI Grok TTS の **Leo 音声だけ**を使うための補助スキルです。音声の生成と音ムラ調整は購入版の手順に従い、**誤読確認だけ Codex が担当**します。別の声、TTS、声変換で代用しません。
 
 **このリポジトリには有料ハーネス本体はありません。** 同梱のスクリプト、Skill 定義、サンプル、改変版の再配布も行いません。使う人ごとに作者から取得し、利用条件を守ってください。xAI の API キーと利用料金も各自で用意します。
 
@@ -13,7 +13,7 @@ New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex\skills" | Out
 git clone https://github.com/puuku0510/windows-leo-narration.git "$env:USERPROFILE\.codex\skills\windows-leo-narration"
 ```
 
-続いて、購入したハーネスを**別の個人用フォルダー**に展開し、その版の手順で `run-narration-tts` と同梱の評価スキルを設定してください。Git Bash、Python、ffmpeg、`XAI_API_KEY` に加え、同梱の Gemini 誤読検査には `GEMINI_API_KEY` と `pyopenjtalk` が必要です。API キーは GitHub に登録せず、実行環境へ安全に渡してください。
+続いて、購入したハーネスを**別の個人用フォルダー**に展開し、その版の手順で `run-narration-tts` を設定してください。Git Bash、Python、ffmpeg、`XAI_API_KEY` が必要です。API キーは GitHub に登録せず、実行環境へ安全に渡してください。Gemini のキーは不要です。
 
 Codex では「`$windows-leo-narration` を使って、この原稿を Leo の日本語ナレーションにして」と依頼できます。最初は短いテスト原稿で試してください。
 
@@ -21,7 +21,8 @@ Codex では「`$windows-leo-narration` を使って、この原稿を Leo の�
 
 - [SKILL.md](SKILL.md): 制作フローと品質確認
 - [Windows 実行メモ](references/windows.md): Git Bash、UTF-8、日本語 JSON の確認点
+- [Leo 設定チェック](scripts/check_leo.py): 生成前に声の設定を読み取り専用で検査
 
-このスキルは購入ハーネスの操作を助ける独立した指示書です。ハーネス自体をインストールしたり、ライセンスを付与したりはしません。必要な本体や検査器が使えない場合は完成扱いせずに止まります。作者の Windows 動作確認は示されていないため、環境ごとに短い音声で検証してください。Leo は xAI の既成音声で、特定人物の声を複製するものではありません。
+このスキルは購入ハーネスの操作を助ける独立した指示書です。ハーネス自体をインストールしたり、ライセンスを付与したりはしません。購入ハーネスが使えない場合は完成扱いせずに止まります。誤読確認には、Codex が実音声を確認できる音声入力またはローカル音声認識が必要です。作者の Windows 動作確認は示されていないため、環境ごとに短い音声で検証してください。Leo は xAI の既成音声で、特定人物の声を複製するものではありません。
 
 このリポジトリのオリジナル文書は [MIT License](LICENSE) で公開します。**購入ハーネスには適用されません。**
